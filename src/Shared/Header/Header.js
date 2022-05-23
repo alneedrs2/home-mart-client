@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from '../../../src/Assets/logo.png'
-
+import logo from "../../../src/Assets/logo.png";
+import auth from "../../firebase.init";
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { signOut } from "firebase/auth";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
 
+    const logout = () => {
+        signOut(auth);
+    };
   const menuItems = (
     <>
       <li>
@@ -14,10 +20,19 @@ const Header = () => {
         <Link to="/review">Reviews</Link>
       </li>
       <li>
-        <Link to="/contact">Contact</Link>
+        <Link to="/blogs">Blogs</Link>
       </li>
       <li>
         <Link to="/about">About</Link>
+      </li>
+      <li>
+        {user ? (
+          <button className="btn btn-ghost" onClick={logout}>
+            Sign Out
+          </button>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </li>
     </>
   );
