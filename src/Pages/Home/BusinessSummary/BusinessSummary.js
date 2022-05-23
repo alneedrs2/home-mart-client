@@ -2,7 +2,7 @@ import React from "react";
 
 const BusinessSummary = () => {
   return (
-    <div className="text-center my-6">
+    <div className="text-center my-16">
       <div>
         <h2 className="text-5xl uppercase text-primary font-bold">
           Million Business Trust Us
@@ -11,7 +11,7 @@ const BusinessSummary = () => {
           Try to understand user expectations
         </h4>
       </div>
-      <div className="stats container mx-auto grid grid-rows-3 lg:grid-rows-1 gap-4 shadow">
+      <div className="stats container mx-auto grid grid-rows-3 md:grid-rows-2 lg:grid-rows-1 gap-4 shadow">
         <div className="stat">
           <div className="stat-figure text-primary">
             <svg
