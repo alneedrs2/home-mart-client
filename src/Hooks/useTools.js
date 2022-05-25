@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const useTools = () => {
   const [tool, setTool] = useState([]);
   useEffect(() => {
-    fetch("tools.json")
+    fetch("http://localhost:5000/tool")
       .then((res) => res.json())
       .then((data) => setTool(data));
   }, []);

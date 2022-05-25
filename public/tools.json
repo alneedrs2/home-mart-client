@@ -4,41 +4,47 @@
     "img": "https://cdn.shopify.com/s/files/1/0610/7122/9164/products/shop001_600x.jpg?v=1638609570",
     "price": 95,
     "description": "Ceramic Valve Core Sitting Basin Wash Basin Combined Copper Hot And Cold Mixing Faucet. The main body of the faucet is made of thickened copper and molded integrally to withstand strong water pressure without leaking.",
-    "quantity": 90
+    "quantity": 90,
+    "order": 1
   },
   {
     "name": "New Blaze Flush",
     "img": "https://cdn.shopify.com/s/files/1/0610/7122/9164/products/shop002_600x.jpg?v=1638610230",
     "price": 86,
     "description": "Ceramic Valve Core Sitting Basin Wash Basin Combined Copper Hot And Cold Mixing Faucet. The main body of the faucet is made of thickened copper and molded integrally to withstand strong water pressure without leaking.",
-    "quantity": 80
+    "quantity": 80,
+    "order": 2
   },
   {
     "name": "Dom Steel Pipe",
     "img": "https://cdn.shopify.com/s/files/1/0610/7122/9164/products/shop003_600x.jpg?v=1638610261",
     "price": 55,
     "description": "Ceramic Valve Core Sitting Basin Wash Basin Combined Copper Hot And Cold Mixing Faucet. The main body of the faucet is made of thickened copper and molded integrally to withstand strong water pressure without leaking.",
-    "quantity": 55
+    "quantity": 55,
+    "order" : 2
   },
   {
     "name": "Joyo Modern Pipe",
     "img": "https://cdn.shopify.com/s/files/1/0610/7122/9164/products/shop012_600x.jpg?v=1638612508",
     "price": 65,
     "description": "Ceramic Valve Core Sitting Basin Wash Basin Combined Copper Hot And Cold Mixing Faucet. The main body of the faucet is made of thickened copper and molded integrally to withstand strong water pressure without leaking.",
-    "quantity": 50
+    "quantity": 50,
+    "order": 2
   },
   {
     "name": "Metal Washbasin",
     "img": "https://cdn.shopify.com/s/files/1/0610/7122/9164/products/shop009_600x.jpg?v=1638612388",
     "price": 71,
     "description": "Ceramic Valve Core Sitting Basin Wash Basin Combined Copper Hot And Cold Mixing Faucet. The main body of the faucet is made of thickened copper and molded integrally to withstand strong water pressure without leaking.",
-    "quantity": 40
+    "quantity": 40,
+    "order": 1
   },
   {
     "name": "Vail Foldable Flush",
     "img": "https://cdn.shopify.com/s/files/1/0610/7122/9164/products/shop005_600x.jpg?v=1638612215",
     "price": 86,
     "description": "Ceramic Valve Core Sitting Basin Wash Basin Combined Copper Hot And Cold Mixing Faucet. The main body of the faucet is made of thickened copper and molded integrally to withstand strong water pressure without leaking.",
-    "quantity": 25
+    "quantity": 25,
+    "order": 4
   }
 ]

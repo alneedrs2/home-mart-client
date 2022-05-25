@@ -3,13 +3,13 @@ import React from "react";
 const Blogs = () => {
   return (
     <div
-      class="accordion accordion-flush container mx-auto my-16"
+      className="accordion accordion-flush container mx-auto my-16"
       id="accordionFlushExample"
     >
-      <div class="accordion-item border-t-0 border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
-        <h2 class="accordion-header mb-0" id="flush-headingOne">
+      <div className="accordion-item border-t-0 border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
+        <h2 className="accordion-header mb-0" id="flush-headingOne">
           <button
-            class="accordion-button
+            className="accordion-button
     relative
     flex
     items-center
@@ -35,30 +35,30 @@ const Blogs = () => {
         </h2>
         <div
           id="flush-collapseOne"
-          class="accordion-collapse border-0 collapse show"
+          className="accordion-collapse border-0 collapse show"
           aria-labelledby="flush-headingOne"
           data-bs-parent="#accordionFlushExample"
         >
-          <div class="accordion-body py-4 px-5">
+          <div className="accordion-body py-4 px-5">
             <h2 className="text-xl">
               To improve the performance of a React Application:
             </h2>
-            <div class="flex">
-              <ol class="bg-white rounded-lg w-96 text-gray-900">
-                <li class="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">
+            <div className="flex">
+              <ol className="bg-white rounded-lg w-96 text-gray-900">
+                <li className="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">
                   1. Keeping component state local where necessary.
                 </li>
-                <li class="px-6 py-2 border-b border-gray-200 w-full">
+                <li className="px-6 py-2 border-b border-gray-200 w-full">
                   2. Memoizing React components to prevent unnecessary
                   re-renders.
                 </li>
-                <li class="px-6 py-2 border-b border-gray-200 w-full">
+                <li className="px-6 py-2 border-b border-gray-200 w-full">
                   3. Code-splitting in React using dynamic import()
                 </li>
-                <li class="px-6 py-2 border-b border-gray-200 w-full">
+                <li className="px-6 py-2 border-b border-gray-200 w-full">
                   4. Windowing or list virtualization in React.
                 </li>
-                <li class="px-6 py-2 w-full rounded-b-lg">
+                <li className="px-6 py-2 w-full rounded-b-lg">
                   5. Lazy loading images in React.
                 </li>
               </ol>
@@ -66,10 +66,10 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <div class="accordion-item border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
-        <h2 class="accordion-header mb-0" id="flush-headingTwo">
+      <div className="accordion-item border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
+        <h2 className="accordion-header mb-0" id="flush-headingTwo">
           <button
-            class="accordion-button
+            className="accordion-button
     collapsed
     relative
     flex
@@ -97,27 +97,27 @@ const Blogs = () => {
         </h2>
         <div
           id="flush-collapseTwo"
-          class="accordion-collapse border-0 collapse"
+          className="accordion-collapse border-0 collapse"
           aria-labelledby="flush-headingTwo"
           data-bs-parent="#accordionFlushExample"
         >
-          <div class="accordion-body py-4 px-5">
+          <div className="accordion-body py-4 px-5">
             <h2 className="text-xl">
               There are four main types of state you need to properly manage in
               a React application:
             </h2>
-            <div class="flex">
-              <ol class="bg-white rounded-lg w-96 text-gray-900">
-                <li class="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">
+            <div className="flex">
+              <ol className="bg-white rounded-lg w-96 text-gray-900">
+                <li className="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">
                   1. Local State
                 </li>
-                <li class="px-6 py-2 border-b border-gray-200 w-full">
+                <li className="px-6 py-2 border-b border-gray-200 w-full">
                   2. Global State
                 </li>
-                <li class="px-6 py-2 border-b border-gray-200 w-full">
+                <li className="px-6 py-2 border-b border-gray-200 w-full">
                   3. Server State
                 </li>
-                <li class="px-6 py-2 border-b border-gray-200 w-full">
+                <li className="px-6 py-2 border-b border-gray-200 w-full">
                   4. URL State
                 </li>
               </ol>
@@ -125,10 +125,10 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <div class="accordion-item border-l-0 border-r-0 border-b-0 rounded-none bg-white border border-gray-200">
-        <h2 class="accordion-header mb-0" id="flush-headingThree">
+      <div className="accordion-item border-l-0 border-r-0 border-b-0 rounded-none bg-white border border-gray-200">
+        <h2 className="accordion-header mb-0" id="flush-headingThree">
           <button
-            class="accordion-button
+            className="accordion-button
     collapsed
     relative
     flex
@@ -155,11 +155,11 @@ const Blogs = () => {
         </h2>
         <div
           id="flush-collapseThree"
-          class="accordion-collapse collapse"
+          className="accordion-collapse collapse"
           aria-labelledby="flush-headingThree"
           data-bs-parent="#accordionFlushExample"
         >
-          <div class="accordion-body py-4 px-5">
+          <div className="accordion-body py-4 px-5">
             Every object with its methods and properties contains an internal
             and hidden property known as [[Prototype]]. The Prototypal
             Inheritance is a feature in javascript used to add methods and
@@ -171,10 +171,10 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <div class="accordion-item border-l-0 border-r-0 border-b-0 rounded-none bg-white border border-gray-200">
-        <h2 class="accordion-header mb-0" id="flush-headingFour">
+      <div className="accordion-item border-l-0 border-r-0 border-b-0 rounded-none bg-white border border-gray-200">
+        <h2 className="accordion-header mb-0" id="flush-headingFour">
           <button
-            class="accordion-button
+            className="accordion-button
     collapsed
     relative
     flex
@@ -203,28 +203,28 @@ const Blogs = () => {
         </h2>
         <div
           id="flush-collapseFour"
-          class="accordion-collapse collapse"
+          className="accordion-collapse collapse"
           aria-labelledby="flush-headingFour"
           data-bs-parent="#accordionFlushExample"
         >
-          <div class="accordion-body py-4 px-5">
+          <div className="accordion-body py-4 px-5">
             <h2 className="text-xl">
               One should never set the state directly because of the following
               reasons:
             </h2>
-            <div class="flex">
-              <ol class="bg-white rounded-lg w-96 text-gray-900">
-                <li class="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">
+            <div className="flex">
+              <ol className="bg-white rounded-lg w-96 text-gray-900">
+                <li className="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg">
                   1. If you update it directly, calling the setState() afterward
                   may just replace the update you made.
                 </li>
-                <li class="px-6 py-2 border-b border-gray-200 w-full">
+                <li className="px-6 py-2 border-b border-gray-200 w-full">
                   2. When you directly update the state, it does not change
                   this.state immediately. Instead, it creates a pending state
                   transition, and accessing it after calling this method will
                   only return the present value.
                 </li>
-                <li class="px-6 py-2 border-b border-gray-200 w-full">
+                <li className="px-6 py-2 border-b border-gray-200 w-full">
                   3. You will lose control of the state across all components.
                 </li>
               </ol>
@@ -232,10 +232,10 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-      <div class="accordion-item border-l-0 border-r-0 border-b-0 rounded-none bg-white border border-gray-200">
-        <h2 class="accordion-header mb-0" id="flush-headingFive">
+      <div className="accordion-item border-l-0 border-r-0 border-b-0 rounded-none bg-white border border-gray-200">
+        <h2 className="accordion-header mb-0" id="flush-headingFive">
           <button
-            class="accordion-button
+            className="accordion-button
     collapsed
     relative
     flex
@@ -262,11 +262,11 @@ const Blogs = () => {
         </h2>
         <div
           id="flush-collapseFive"
-          class="accordion-collapse collapse"
+          className="accordion-collapse collapse"
           aria-labelledby="flush-headingFive"
           data-bs-parent="#accordionFlushExample"
         >
-          <div class="accordion-body py-4 px-5">
+          <div className="accordion-body py-4 px-5">
             <p>
               A unit test is a way of testing a unit - the smallest piece of
               code that can be logically isolated in a system. In most

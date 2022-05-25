@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
@@ -10,6 +11,9 @@ import Loading from "../../../Shared/Loading/Loading";
 import google from "../../../Assets/social/google.png";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [email, setEmail] = useState('');
   const {
     register,
     formState: { errors },
@@ -19,17 +23,17 @@ const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
   let signInError;
-  const navigate = useNavigate();
-  const location = useLocation();
+
   let from = location.state?.from?.pathname || "/";
 
   if (user || gUser) {
     navigate(from, { replace: true });
   }
 
-  if (loading || gLoading) {
+  if (loading || gLoading || sending) {
     return <Loading></Loading>;
   }
 
@@ -44,34 +48,34 @@ const Login = () => {
     signInWithEmailAndPassword(data.email, data.password);
   };
   return (
-    <section class="h-screen">
-      <div class="px-6 h-full text-gray-800">
-        <div class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
-          <div class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
+    <section className="h-screen">
+      <div className="px-6 h-full text-gray-800">
+        <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
+          <div className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
             <img
               src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-              class="w-full"
+              className="w-full"
               alt="Sample image"
             />
           </div>
-          <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
-            <div class="flex justify-between items-center mb-6">
+          <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
+            <div className="flex justify-between items-center mb-6">
               <form onSubmit={handleSubmit(onSubmit)}>
-                <div class="flex flex-row items-center justify-center lg:justify-start">
-                  <p class="text-lg mb-0 mr-4">Sign in with</p>
+                <div className="flex flex-row items-center justify-center lg:justify-start">
+                  <p className="text-lg mb-0 mr-4">Sign in with</p>
                   <button
                     onClick={() => signInWithGoogle()}
                     type="button"
                     data-mdb-ripple="true"
                     data-mdb-ripple-color="light"
-                    class="inline-block p-3 bg-primary text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1"
+                    className="inline-block p-3 bg-primary text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1"
                   >
                     <img src={google} alt="" />
                   </button>
                 </div>
 
-                <div class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
-                  <p class="text-center font-semibold mx-4 mb-0">Or</p>
+                <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
+                  <p className="text-center font-semibold mx-4 mb-0">Or</p>
                 </div>
                 <div className="form-control w-full max-w-xs">
                   <label className="label">
@@ -80,6 +84,7 @@ const Login = () => {
                   <input
                     type="email"
                     placeholder="Your Email"
+                    onChange={(e) => setEmail(e.target.value)}
                     className="input input-bordered w-full max-w-xs"
                     {...register("email", {
                       required: {
@@ -146,10 +151,7 @@ const Login = () => {
                 />
               </form>
             </div>
-            <a href="#!" class="text-gray-800">
-              Forgot password?
-            </a>
-            <p class="text-sm font-semibold mt-2 pt-1 mb-0">
+            <p className="text-sm font-semibold mt-2 pt-1 mb-0">
               Don't have an account?{" "}
               <Link className="text-primary" to="/register">
                 Register
