@@ -22,7 +22,7 @@ const MyOrders = () => {
             <tr>
               <th></th>
               <th>Customer</th>
-              <th>Tool Id</th>
+              <th>Tool</th>
               <th>Quantity</th>
               <th>Total</th>
               <th>Email</th>
@@ -34,7 +34,7 @@ const MyOrders = () => {
               <tr>
                 <th>{index + 1}</th>
                 <td>{a.customerName}</td>
-                <td>{a._id}</td>
+                <td>{a.tool}</td>
                 <td>{a.order}</td>
                 <td>{a.totalPrice}</td>
                 <td>{a.customer}</td>

@@ -30,7 +30,7 @@ const ToolDetails = () => {
     event.preventDefault();
     const order = {
       toolId: tool._id,
-      tool: tool.name,
+      tool: tool.customerName,
       totalPrice,
       order: quantity,
       customer: user.email,
