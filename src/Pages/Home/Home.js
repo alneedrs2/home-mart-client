@@ -6,6 +6,7 @@ import AllReview from "./AllReview/AllReview";
 import Banner from "./Banner/Banner";
 import BusinessSummary from "./BusinessSummary/BusinessSummary";
 import Divider from "./Divider/Divider";
+import OurTeam from "./OurTeam";
 import Tools from "./Tools/Tools";
 
 const Home = () => {
@@ -29,6 +30,7 @@ const Home = () => {
           See All Reviews
         </Link>
       </div>
+      <OurTeam></OurTeam>
       <Footer></Footer>
     </div>
   );
