@@ -13,6 +13,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import Reviews from "./Pages/Home/AllReview/Reviews";
 import RequireAuth from "./Pages/Login/RequireAuth";
+import Users from "./Pages/Dashboard/Users";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           }
         >
           <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route path="users" element={<Users></Users>}></Route>
         </Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
