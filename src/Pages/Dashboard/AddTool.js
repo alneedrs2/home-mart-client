@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 const AddTool = () => {
   const { register, reset, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     const url = "http://localhost:5000/tool";
     fetch(url, {
       method: "POST",
