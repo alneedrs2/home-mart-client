@@ -24,7 +24,7 @@ const Header = () => {
         <Link to="/blogs">Blogs</Link>
       </li>
       <li>
-        <Link to="/about">About</Link>
+        <Link to="/myPortfolio">My Portfolio</Link>
       </li>
       {user && (
         <li>
