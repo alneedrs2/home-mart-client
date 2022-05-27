@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect } from "react";
 import {
-  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
@@ -9,11 +8,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../../../Shared/Loading/Loading";
 import google from "../../../Assets/social/google.png";
+import useToken from "../../../Hooks/useToken";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [email, setEmail] = useState('');
   const {
     register,
     formState: { errors },
@@ -23,30 +20,36 @@ const Login = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
+  const [token] = useToken(user || gUser);
 
   let signInError;
-
+  const navigate = useNavigate();
+  const location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
-  if (user || gUser) {
-    navigate(from, { replace: true });
-  }
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
 
-  if (loading || gLoading || sending) {
+  if (loading || gLoading) {
     return <Loading></Loading>;
   }
 
   if (error || gError) {
     signInError = (
       <p className="text-red-500">
-        <small>{error?.message}</small>
+        <small>{error?.message || gError?.message}</small>
       </p>
     );
   }
+
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.email, data.password);
   };
+
   return (
     <section className="h-screen">
       <div className="px-6 h-full text-gray-800">
@@ -59,24 +62,22 @@ const Login = () => {
             />
           </div>
           <div className="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
-            <div className="flex justify-between items-center mb-6">
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="flex flex-row items-center justify-center lg:justify-start">
-                  <p className="text-lg mb-0 mr-4">Sign in with</p>
-                  <button
-                    onClick={() => signInWithGoogle()}
-                    type="button"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
-                    className="inline-block p-3 bg-primary text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1"
-                  >
-                    <img src={google} alt="" />
-                  </button>
-                </div>
+            <div className="flex flex-col items-center mb-6">
+              <div className="flex flex-row items-center justify-center lg:justify-start">
+                <p className="text-lg mb-0 mr-4">Sign in with</p>
+                <button
+                  onClick={() => signInWithGoogle()}
+                  type="button"
+                  data-mdb-ripple="true"
+                  data-mdb-ripple-color="light"
+                  className="inline-block p-3 bg-primary text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mx-1"
+                >
+                  <img src={google} alt="" />
+                </button>
+              </div>
+              <div className="divider">OR</div>
 
-                <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
-                  <p className="text-center font-semibold mx-4 mb-0">Or</p>
-                </div>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-control w-full max-w-xs">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -84,7 +85,6 @@ const Login = () => {
                   <input
                     type="email"
                     placeholder="Your Email"
-                    onChange={(e) => setEmail(e.target.value)}
                     className="input input-bordered w-full max-w-xs"
                     {...register("email", {
                       required: {
@@ -145,18 +145,18 @@ const Login = () => {
 
                 {signInError}
                 <input
-                  className="btn w-full max-w-xs bg-primary text-white"
+                  className="btn w-full max-w-xs text-white"
                   type="submit"
                   value="Login"
                 />
               </form>
+              <p className="text-sm font-semibold mt-2 pt-1 mb-0">
+                Don't have an account?{" "}
+                <Link className="text-primary" to="/register">
+                  Register
+                </Link>
+              </p>
             </div>
-            <p className="text-sm font-semibold mt-2 pt-1 mb-0">
-              Don't have an account?{" "}
-              <Link className="text-primary" to="/register">
-                Register
-              </Link>
-            </p>
           </div>
         </div>
       </div>

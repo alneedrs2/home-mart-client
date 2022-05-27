@@ -2,9 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../src/Assets/logo.png";
 import auth from "../../firebase.init";
-import {
-  useAuthState,
-} from "react-firebase-hooks/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 
 const Header = () => {
@@ -12,6 +10,7 @@ const Header = () => {
 
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem("accessToken");
   };
   const menuItems = (
     <>
@@ -19,7 +18,7 @@ const Header = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/review">Reviews</Link>
+        <Link to="/reviews">Reviews</Link>
       </li>
       <li>
         <Link to="/blogs">Blogs</Link>

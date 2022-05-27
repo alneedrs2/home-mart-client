@@ -7,32 +7,44 @@ import useTools from "../../Hooks/useTools";
 
 const ToolDetails = () => {
   const { toolId } = useParams();
-  const [item, setItem] = useState([]);
   const [tool] = useTools(toolId);
   const [user] = useAuthState(auth);
-  const [quantity, setQuantity] = useState(1);
+  const [item, setItem] = useState([]);
+  const { _id, img, name, price, order, description } = item;
+  const [qty, setQty] = useState(1);
   const [totalPrice, setTotalPrice] = useState();
 
-  const handelDecrement = () => {
-    if (quantity > item.order) {
-      setQuantity((prevCount) => prevCount - 1);
-      setTotalPrice(quantity * item.price);
+  const handleDecrement = () => {
+    if (qty > 1) {
+      setQty((prevCount) => prevCount - 1);
+      setTotalPrice(qty * item.price);
     }
   };
-  const handelIncrement = () => {
-    if (quantity < item.quantity) {
-      setQuantity((prevCount) => prevCount + 1);
-      setTotalPrice(quantity * item.price);
+
+  const handleIncrement = () => {
+    if (qty < item.quantity) {
+      setQty((prevCount) => prevCount + 1);
+      setTotalPrice(qty * item.price);
     }
   };
+
+  if (qty < item.order) {
+    toast(`add atleast ${item.order} for place order`);
+  }
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/tool/${toolId}`)
+      .then((res) => res.json())
+      .then((data) => setItem(data));
+  }, []);
 
   const handlePlaceOrder = (event) => {
     event.preventDefault();
     const order = {
-      toolId: tool._id,
-      tool: tool.customerName,
+      toolId: _id,
+      tool: name,
       totalPrice,
-      order: quantity,
+      order: qty,
       customer: user.email,
       customerName: user.displayName,
       address: event.target.address.value,
@@ -52,14 +64,6 @@ const ToolDetails = () => {
       });
   };
 
-  useEffect(() => {
-    const url = `http://localhost:5000/tool/${toolId}`;
-
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setItem(data));
-  });
-
   return (
     <div
       onSubmit={handlePlaceOrder}
@@ -67,34 +71,32 @@ const ToolDetails = () => {
     >
       <div className="card w-96 bg-base-10 mx-auto shadow-xl">
         <figure>
-          <img src={item.img} alt="tool" />
+          <img src={img} alt="tool" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{item.name}</h2>
-          <h2 className="card-title">$ {item.price}</h2>
+          <h2 className="card-title">{name}</h2>
+          <h2 className="card-title">$ {price}</h2>
           <div className="">
-            <p className="text-left">{item.description}</p>
+            <p className="text-left">{description}</p>
             <p className="text-xl text-left">
               Available Quantity: {item.quantity}
             </p>
-            <p className="text-xl text-left">
-              Minimum Order Quantity: {item.order}
-            </p>
+            <p className="text-xl text-left">Minimum Order Quantity: {order}</p>
           </div>
           <div className="input-group justify-center">
             <button
               type="button"
-              onClick={handelDecrement}
+              onClick={handleDecrement}
               className="input-group-text"
             >
               <span className="text-2xl btn btn-secondary">-</span>
             </button>
             <div className="from-control px-5 py-3 bg-base-200 text-center">
-              {quantity}
+              {qty}
             </div>
             <button
               type="button"
-              onClick={handelIncrement}
+              onClick={handleIncrement}
               className="input-group-text"
             >
               <span className="text-2xl btn btn-secondary">+</span>
@@ -168,7 +170,7 @@ const ToolDetails = () => {
             />
           </div>
           <input
-            disabled={quantity < item.order || quantity > item.quantity}
+            disabled={qty < item.order || qty > item.quantity}
             type="submit"
             value="Place Order"
             className="btn btn-secondary input-bordered w-full max-w-xs"
