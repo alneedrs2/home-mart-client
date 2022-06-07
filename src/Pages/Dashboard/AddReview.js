@@ -6,7 +6,7 @@ const AddReview = () => {
   const { register, reset, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    const url = "http://localhost:5000/review";
+    const url = "https://sheltered-mountain-12032.herokuapp.com/review";
     fetch(url, {
       method: "POST",
       headers: {
@@ -26,7 +26,7 @@ const AddReview = () => {
 
   return (
     <div className="text-center">
-        <h2 className="text-2xl my-11 font-bold text-primary">Add A Review</h2>
+      <h2 className="text-2xl my-11 font-bold text-primary">Add A Review</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           className="mb-3"

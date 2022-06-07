@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const AddTool = () => {
   const { register, reset, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    const url = "http://localhost:5000/tool";
+    const url = "https://sheltered-mountain-12032.herokuapp.com/tool";
     fetch(url, {
       method: "POST",
       headers: {

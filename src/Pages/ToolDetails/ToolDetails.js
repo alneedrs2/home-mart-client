@@ -33,7 +33,7 @@ const ToolDetails = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/tool/${toolId}`)
+    fetch(`https://sheltered-mountain-12032.herokuapp.com/tool/${toolId}`)
       .then((res) => res.json())
       .then((data) => setItem(data));
   }, []);
@@ -50,7 +50,7 @@ const ToolDetails = () => {
       address: event.target.address.value,
       phone: event.target.phone.value,
     };
-    fetch("http://localhost:5000/order", {
+    fetch("https://sheltered-mountain-12032.herokuapp.com/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",

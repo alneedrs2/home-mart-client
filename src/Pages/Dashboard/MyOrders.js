@@ -11,12 +11,15 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (customer) {
-      fetch(`http://localhost:5000/order?customer=${customer.email}`, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://sheltered-mountain-12032.herokuapp.com/order?customer=${customer.email}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => {
           if (res.status === 401 || res.status === 403) {
             signOut(auth);
